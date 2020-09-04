@@ -1,0 +1,28 @@
+type Schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  exam(id: ID!): Exam
+  exams: [Exam]
+  topics(exam: ID!): [Topic]
+}
+
+type Mutation {
+  addExam(title: String!, image: String, description: String): Exam!
+}
+
+type Exam {
+  id: ID!
+  title: String!
+  image: String
+  description: String
+}
+
+type Topic {
+  id: ID!
+  title: String!
+  content: String!
+  questions: [String]
+}
