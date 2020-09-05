@@ -7,12 +7,16 @@ type UseQuery<TVariables = OperationVariables> = (query: DocumentNode, options?:
 
 export const useQuery: UseQuery = useQ
 
-export const useLoadingQuery: UseQuery = function (query, options) {
+type LoadingQueryResult<V> = Omit<QueryResult<Query, V>, 'loading'> & {
+  loading?: JSX.Element
+}
+
+export const useLoadingQuery = function <V = OperationVariables>(query: DocumentNode, options?: QueryHookOptions<Query, V>): LoadingQueryResult<V> {
   const result = useQ(query, options)
 
   if (result.loading) {
     result.loading = React.createElement(Loader, { active: true, inline: 'centered' }, 'Loading...') as any
   }
 
-  return result
+  return result as any
 }

@@ -17,11 +17,17 @@ export type Schema = {
 export type Query = {
   exam?: Maybe<Exam>;
   exams?: Maybe<Array<Maybe<Exam>>>;
+  topic?: Maybe<Topic>;
   topics?: Maybe<Array<Maybe<Topic>>>;
 };
 
 
 export type QueryExamArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryTopicArgs = {
   id: Scalars['ID'];
 };
 

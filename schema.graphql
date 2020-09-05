@@ -6,6 +6,7 @@ type Schema {
 type Query {
   exam(id: ID!): Exam
   exams: [Exam]
+  topic(id: ID!): Topic
   topics(examId: ID!): [Topic]
 }
 

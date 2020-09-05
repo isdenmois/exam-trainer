@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { gql } from '@apollo/client'
-import { Header, Button, Icon } from 'semantic-ui-react'
+import { Header, Button, Icon, Card, Container } from 'semantic-ui-react'
 import { useLoadingQuery } from 'utils/apollo'
 import { TopicItem } from './topic-item'
 
@@ -31,16 +31,20 @@ export function ExamPage() {
     <>
       <Header>{exam.title}</Header>
 
-      {topics.map(topic => (
-        <TopicItem key={topic.id} topic={topic} />
-      ))}
+      <Card.Group>
+        {topics.map(topic => (
+          <TopicItem key={topic.id} topic={topic} />
+        ))}
+      </Card.Group>
 
-      <Button animated='vertical' as={Link} to={`/exam/${id}/add-topic`}>
-        <Button.Content hidden>Add topic</Button.Content>
-        <Button.Content visible>
-          <Icon name='add' />
-        </Button.Content>
-      </Button>
+      <div style={{ marginTop: '1em', textAlign: 'right' }}>
+        <Button animated='vertical' as={Link} to={`/exam/${id}/add-topic`}>
+          <Button.Content hidden>Add topic</Button.Content>
+          <Button.Content visible>
+            <Icon name='add' />
+          </Button.Content>
+        </Button>
+      </div>
     </>
   )
 }
