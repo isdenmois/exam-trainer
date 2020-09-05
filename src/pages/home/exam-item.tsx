@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image } from 'semantic-ui-react'
-import { Exam } from 'types'
+import { Exam } from 'typings'
 
 type Props = {
   exam: Exam

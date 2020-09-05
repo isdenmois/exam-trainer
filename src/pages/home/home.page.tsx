@@ -1,6 +1,7 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client'
-import { Dimmer, Loader, Image, Segment, Container, Card } from 'semantic-ui-react'
+import { gql } from '@apollo/client'
+import { Loader, Card } from 'semantic-ui-react'
+import { useQuery } from 'utils/apollo'
 import { ExamItem } from './exam-item'
 
 const EXAMS_QUERY = gql`

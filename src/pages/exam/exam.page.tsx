@@ -1,8 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { useQuery, gql } from '@apollo/client'
+import { gql } from '@apollo/client'
 import { Loader, Header, Button, Icon } from 'semantic-ui-react'
+import { useQuery } from 'utils/apollo'
 import { TopicItem } from './topic-item'
 
 export const EXAM_QUERY = gql`

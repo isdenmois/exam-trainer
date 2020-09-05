@@ -1,9 +1,10 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { useQuery, useMutation, gql } from '@apollo/client'
-import { Loader, Header, Button, Icon, Form, Checkbox } from 'semantic-ui-react'
+import { useMutation, gql } from '@apollo/client'
+import { Loader, Header, Button, Form } from 'semantic-ui-react'
 import { useForm } from 'react-hook-form'
 import { EXAM_QUERY } from 'pages/exam/exam.page'
+import { useQuery } from 'utils/apollo'
 
 const TOPIC_EXAM_QUERY = gql`
   query TopicExam($examId: ID!) {
