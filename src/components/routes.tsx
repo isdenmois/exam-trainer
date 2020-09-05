@@ -6,6 +6,7 @@ import { ExamPage } from 'pages/exam/exam.page'
 import { AddExamPage } from 'pages/add-exam.page'
 import { AddTopicPage } from 'pages/add-topic/add-topic.page'
 import { TopicPage } from 'pages/topic/topic.page'
+import { TopicEditPage } from 'pages/topic-edit/topic-edit.page'
 
 export function Routes() {
   return (
@@ -42,8 +43,12 @@ export function Routes() {
             <AddTopicPage />
           </Route>
 
-          <Route path='/topic/:id'>
+          <Route exact path='/topic/:id'>
             <TopicPage />
+          </Route>
+
+          <Route path='/topic/:id/edit'>
+            <TopicEditPage />
           </Route>
         </Switch>
       </Container>

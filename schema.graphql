@@ -13,6 +13,7 @@ type Query {
 type Mutation {
   addExam(title: String!, image: String, description: String): Exam!
   addTopic(examId: ID!, title: String!, content: String!, questions: [String]): Topic!
+  updateTopic(id: ID!, title: String, content: String, questions: [String]): Topic!
 }
 
 type Exam {

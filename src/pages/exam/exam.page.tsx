@@ -20,7 +20,7 @@ export const EXAM_QUERY = gql`
 `
 
 export function ExamPage() {
-  const { id } = useParams()
+  const { id } = useParams<any>()
   const { data, loading } = useLoadingQuery(EXAM_QUERY, { variables: { id } })
 
   if (loading) return loading

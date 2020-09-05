@@ -39,6 +39,7 @@ export type QueryTopicsArgs = {
 export type Mutation = {
   addExam: Exam;
   addTopic: Topic;
+  updateTopic: Topic;
 };
 
 
@@ -53,6 +54,14 @@ export type MutationAddTopicArgs = {
   examId: Scalars['ID'];
   title: Scalars['String'];
   content: Scalars['String'];
+  questions?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+export type MutationUpdateTopicArgs = {
+  id: Scalars['ID'];
+  title?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
   questions?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 

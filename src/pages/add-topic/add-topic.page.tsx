@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useMutation, gql } from '@apollo/client'
-import { Header, Button, Form } from 'semantic-ui-react'
-import { useForm } from 'react-hook-form'
+import { Header } from 'semantic-ui-react'
 import { EXAM_QUERY } from 'pages/exam/exam.page'
 import { useLoadingQuery } from 'utils/apollo'
+import { TopicForm } from 'components/topic-form'
 
 const TOPIC_EXAM_QUERY = gql`
   query TopicExam($examId: ID!) {
@@ -25,7 +25,7 @@ const ADD_TOPIC = gql`
 `
 
 export function AddTopicPage() {
-  const { examId } = useParams()
+  const { examId } = useParams<any>()
   const { data, loading } = useLoadingQuery(TOPIC_EXAM_QUERY, { variables: { examId } })
   const [mutate, { loading: disabled }] = useMutation(ADD_TOPIC)
 
@@ -49,27 +49,5 @@ export function AddTopicPage() {
 
       <TopicForm onSubmit={onSubmit} disabled={disabled} />
     </>
-  )
-}
-
-function TopicForm({ onSubmit, disabled }) {
-  const { register, handleSubmit } = useForm()
-
-  return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Field>
-        <label>Title</label>
-        <input name='title' placeholder='Title' disabled={disabled} required ref={register} />
-      </Form.Field>
-
-      <Form.Field>
-        <label>Content</label>
-        <textarea required name='content' placeholder='Content' disabled={disabled} ref={register} />
-      </Form.Field>
-
-      <Button type='submit' disabled={disabled}>
-        Save
-      </Button>
-    </Form>
   )
 }
