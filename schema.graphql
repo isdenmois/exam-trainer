@@ -6,11 +6,12 @@ type Schema {
 type Query {
   exam(id: ID!): Exam
   exams: [Exam]
-  topics(exam: ID!): [Topic]
+  topics(examId: ID!): [Topic]
 }
 
 type Mutation {
   addExam(title: String!, image: String, description: String): Exam!
+  addTopic(examId: ID!, title: String!, content: String!, questions: [String]): Topic!
 }
 
 type Exam {
@@ -22,6 +23,7 @@ type Exam {
 
 type Topic {
   id: ID!
+  examId: ID!
   title: String!
   content: String!
   questions: [String]

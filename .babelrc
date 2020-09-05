@@ -1,0 +1,21 @@
+{
+  "presets": [["@babel/preset-env", { "modules": false, "targets": "ios 13.2" }], "@babel/preset-react"],
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".android.js", ".android.tsx", ".ios.js", ".ios.tsx"]
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    },
+    "test": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"]
+    }
+  }
+}
