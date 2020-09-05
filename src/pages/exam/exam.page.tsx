@@ -2,8 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { gql } from '@apollo/client'
-import { Loader, Header, Button, Icon } from 'semantic-ui-react'
-import { useQuery } from 'utils/apollo'
+import { Header, Button, Icon } from 'semantic-ui-react'
+import { useLoadingQuery } from 'utils/apollo'
 import { TopicItem } from './topic-item'
 
 export const EXAM_QUERY = gql`
@@ -21,14 +21,9 @@ export const EXAM_QUERY = gql`
 
 export function ExamPage() {
   const { id } = useParams()
-  const { data, loading } = useQuery(EXAM_QUERY, { variables: { id } })
+  const { data, loading } = useLoadingQuery(EXAM_QUERY, { variables: { id } })
 
-  if (loading)
-    return (
-      <Loader active inline='centered'>
-        Loading...
-      </Loader>
-    )
+  if (loading) return loading
 
   const { exam, topics } = data
 

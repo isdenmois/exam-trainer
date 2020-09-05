@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useMutation, gql } from '@apollo/client'
-import { Loader, Header, Button, Form } from 'semantic-ui-react'
+import { Header, Button, Form } from 'semantic-ui-react'
 import { useForm } from 'react-hook-form'
 import { EXAM_QUERY } from 'pages/exam/exam.page'
-import { useQuery } from 'utils/apollo'
+import { useLoadingQuery } from 'utils/apollo'
 
 const TOPIC_EXAM_QUERY = gql`
   query TopicExam($examId: ID!) {
@@ -26,7 +26,7 @@ const ADD_TOPIC = gql`
 
 export function AddTopicPage() {
   const { examId } = useParams()
-  const { data, loading } = useQuery(TOPIC_EXAM_QUERY, { variables: { examId } })
+  const { data, loading } = useLoadingQuery(TOPIC_EXAM_QUERY, { variables: { examId } })
   const [mutate, { loading: disabled }] = useMutation(ADD_TOPIC)
 
   const history = useHistory()
@@ -39,12 +39,7 @@ export function AddTopicPage() {
     history.push(`/exam/${examId}`)
   }
 
-  if (loading)
-    return (
-      <Loader active inline='centered'>
-        Loading...
-      </Loader>
-    )
+  if (loading) return loading
 
   const { exam } = data
 

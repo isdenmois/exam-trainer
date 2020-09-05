@@ -1,7 +1,7 @@
 import React from 'react'
 import { gql } from '@apollo/client'
-import { Loader, Card } from 'semantic-ui-react'
-import { useQuery } from 'utils/apollo'
+import { Card } from 'semantic-ui-react'
+import { useLoadingQuery } from 'utils/apollo'
 import { ExamItem } from './exam-item'
 
 const EXAMS_QUERY = gql`
@@ -16,13 +16,8 @@ const EXAMS_QUERY = gql`
 `
 
 export function HomePage() {
-  const { data, loading } = useQuery(EXAMS_QUERY)
-  if (loading)
-    return (
-      <Loader active inline='centered'>
-        Loading...
-      </Loader>
-    )
+  const { data, loading } = useLoadingQuery(EXAMS_QUERY)
+  if (loading) return loading
 
   return (
     <Card.Group>
